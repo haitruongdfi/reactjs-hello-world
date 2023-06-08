@@ -3,11 +3,20 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+//Redux configuration
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
+import rootReducer from './redux/store/reducers/rootReducer';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <Provider store={
+      createStore(rootReducer,
+        window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()) // this line is demand for Redux Dev tools in browsers
+    }>
+      <App />
+    </Provider>
   </React.StrictMode>
 );
 
